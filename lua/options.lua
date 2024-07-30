@@ -10,6 +10,8 @@ o.signcolumn = "yes"
 o.cursorline = true
 o.relativenumber = true
 
+o.colorcolumn = "90"
+
 o.tabstop = 4
 o.shiftwidth = 4
 o.autoindent = true

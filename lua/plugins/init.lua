@@ -60,14 +60,23 @@ return {
   {
     "nvimdev/dashboard-nvim",
     event = "VimEnter",
-    lazy = false,
-    cmd = { "Dashboard" },
     config = function()
       require("dashboard").setup {
-        -- config
-        require "configs.dashboard",
+        theme = "hyper",
+        shortcut_type = "number",
+        config = {
+          week_header = {
+            enable = true,
+          },
+        },
+        hide = {
+          statusline = false,
+        },
+        change_to_vcs_root = true,
       }
     end,
     dependencies = { { "nvim-tree/nvim-web-devicons" } },
   },
+
+  { import = "plugins.added.harpoon2" },
 }
