@@ -4,7 +4,7 @@ local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
-local servers = { "html", "cssls" }
+local servers = { "lua_ls", "eslint", "html", "cssls", "marksman" }
 
 -- lsps with default config
 for _, lsp in ipairs(servers) do
@@ -15,16 +15,29 @@ for _, lsp in ipairs(servers) do
   }
 end
 
--- typescript
-lspconfig.tsserver.setup {
+lspconfig.sqlls.setup {
   on_attach = on_attach,
   on_init = on_init,
   capabilities = capabilities,
+  filetypes = { "sql", "mysql" },
+  root_dir = function(_)
+    return vim.loop.cwd()
+  end,
 }
 
--- eslint
-lspconfig.eslint.setup {
+lspconfig.lua_ls.setup {
   on_attach = on_attach,
   on_init = on_init,
   capabilities = capabilities,
+  settings = {
+    Lua = {
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {
+          "vim",
+          "require",
+        },
+      },
+    },
+  },
 }
