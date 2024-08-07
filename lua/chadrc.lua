@@ -5,17 +5,23 @@
 local M = {}
 
 M.ui = {
-  theme = "bearded-arc",
+  theme = "tokyonight",
   transparency = true,
   telescope = { style = "bordered" },
+
   hl_override = {
     Comment = { italic = true },
     ["@comment"] = { italic = true },
-    -- NormalFloat = { bg = { "black", -5 } },
-    -- TelescopeNormal = { bg = "none" },
+    MsgArea = { bg = "red", fg = "blue" },
+    StatusLine = { link = "MsgArea" },
   },
   hl_add = {
     ColorColumn = { bg = { "grey", -12 } },
+    DashboardHeader = { fg = { "orange", -10 } },
+    DashboardProjectTitle = { link = "DashboardHeader" },
+    DashboardMruTitle = { link = "DashboardHeader" },
+    DashboardFooter = { link = "DashboardHeader" },
+    NotifyBackground = { bg = "orange" },
   },
 }
 

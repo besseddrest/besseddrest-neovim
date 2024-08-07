@@ -7,17 +7,20 @@ local map = vim.keymap.set
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 
+-- remapping h to "i" insert
+map({ "n", "v" }, "h", "i", { noremap = true, silent = true })
+
 -- Remap hjkl to arrow keys in both normal and visual modes
-map({ "n", "v" }, "j", "<Left>", { noremap = true, silent = true })
-map({ "n", "v" }, "k", "<Down>", { noremap = true, silent = true })
-map({ "n", "v" }, "i", "<Up>", { noremap = true, silent = true })
-map({ "n", "v" }, "l", "<Right>", { noremap = true, silent = true })
+map({ "n", "v", "o" }, "j", "<Left>", { noremap = true, silent = true })
+map({ "n", "v", "o" }, "k", "<Down>", { noremap = true, silent = true })
+map({ "n", "v", "o" }, "i", "<Up>", { noremap = true, silent = true })
+map({ "n", "v", "o" }, "l", "<Right>", { noremap = true, silent = true })
 
 -- map("v", "j", "<Left>", { noremap = true, silent = true })
 -- map("v", "k", "<Down>", { noremap = true, silent = true })
 -- map("v", "i", "<Up>", { noremap = true, silent = true })
 -- map("v", "l", "<Right>", { noremap = true, silent = true })
-
+--
 -- open diagnostic float
 map("n", "<leader>od", function()
   return vim.diagnostic.open_float()
