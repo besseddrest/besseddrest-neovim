@@ -9,6 +9,7 @@ vim.api.nvim_create_autocmd("Filetype", {
     "codecompanion",
     "lazy",
     "qf",
+    "dbout",
     "dbui",
   },
   group = augroup("PreventBufferSwap", { clear = true }),
@@ -42,8 +43,16 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 -- end from gale
 
--- Dadbod: automatically unfold query results
+-- NvimTree
+-- vim.api.nvim_create_autocmd("BufWinEnter", {
+--   desc = "Add numbers to NvimTree",
+--   -- group = augroup("NvimTree", { clear = true }),
+--   command = [[ setlocal rnu ]],
+-- })
+
+-- Dadbod
 vim.api.nvim_create_autocmd("FileType", {
+  desc = "Automatically unfold query results",
   pattern = { "dbout" },
   callback = function()
     vim.opt.foldenable = false

@@ -1,8 +1,3 @@
--- return {
---   "pmizio/typescript-tools.nvim",
---   dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
--- }
-
 local on_attach = require("nvchad.configs.lspconfig").on_attach
 
 return {

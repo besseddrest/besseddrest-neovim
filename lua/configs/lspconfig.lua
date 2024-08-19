@@ -4,7 +4,15 @@ local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
-local servers = { "lua_ls", "eslint", "html", "cssls", "marksman" }
+local servers = {
+  "lua_ls",
+  "html",
+  "cssls",
+  "marksman",
+  "somesass_ls",
+  "eslint",
+  "jsonls",
+}
 
 -- lsps with default config
 for _, lsp in ipairs(servers) do
@@ -14,6 +22,17 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   }
 end
+
+-- lspconfig.eslint.setup {
+--   on_attach = function(client, bufnr)
+--     vim.api.nvim_create_autocmd("BufWritePre", {
+--       buffer = bufnr,
+--       command = "EslintFixAll",
+--     })
+--   end,
+--   on_init = on_init,
+--   capabilities = capabilities,
+-- }
 
 lspconfig.sqlls.setup {
   on_attach = on_attach,

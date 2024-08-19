@@ -1,7 +1,8 @@
 return {
   "ThePrimeagen/harpoon",
   branch = "harpoon2",
-  dependencies = { "nvim-lua/plenary.nvim" },
+  event = "User FilePost",
+  dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
   config = function()
     local harpoon = require "harpoon"
     local kmset = vim.keymap.set
@@ -10,11 +11,8 @@ return {
     harpoon:setup {}
     -- REQUIRED
 
-    kmset("n", "<leader>hh", function()
+    kmset("n", "<leader>hi", function()
       harpoon:list():add()
-    end)
-    kmset("n", "<leader>h", function()
-      harpoon.ui:toggle_quick_menu(harpoon:list())
     end)
 
     kmset("n", "<leader>ha", function()
@@ -30,9 +28,13 @@ return {
       harpoon:list():select(4)
     end)
 
-    --     kmset("n", "<leader>hc", function()
+    -- kmset("n", "<leader>hc", function()
     --   harpoon:list():clear_all()
     -- end)
+    --
+    kmset("n", "<leader>h", function()
+      harpoon.ui:toggle_quick_menu(harpoon:list())
+    end)
 
     -- Toggle previous & next buffers stored within Harpoon list
     kmset("n", "<C-S-P>", function()

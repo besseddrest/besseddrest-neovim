@@ -1,22 +1,28 @@
 return {
-  -- can't live w/o em
-  { import = "plugins.base.conform" },
-  { import = "plugins.base.mason" },
-  { import = "plugins.base.treesitter" },
-  { import = "plugins.lang.lspconfig" },
+    -- can't live w/o em
+    { import = "plugins.base.conform" },
+    { import = "plugins.base.mason" },
+    { import = "plugins.base.treesitter" },
+    { import = "plugins.lang.lspconfig" },
 
-  -- util
-  { import = "plugins.ui.harpoon2" },
+    -- language related
+    { import = "plugins.lang.ts-autotag" },
+    { import = "plugins.lang.ts-tools" },
+    { import = "plugins.lang.ts-comments" },
 
-  -- ui
-  { import = "plugins.ui.dashboard-nvim" },
-  { import = "plugins.ui.noice" },
-  { import = "plugins.ui.notify" },
+    -- util
+    { import = "plugins.util.harpoon2" },
+    { import = "plugins.util.trouble" },
+    { import = "plugins.util.neominimap" },
+    { import = "plugins.util.fugitive" },
 
-  --db
-  { import = "plugins.ui.vim-dadbod-ui" },
+    -- db
+    { import = "plugins.ui.vim-dadbod-ui" },
 
-  -- language related
-  { import = "plugins.lang.ts-autotag" },
-  { import = "plugins.lang.ts-tools" },
+    -- ui
+    { import = "plugins.ui.dashboard-nvim" },
+    { import = "plugins.ui.noice" },
+    { import = "plugins.ui.notify" },
+    { import = "plugins.ui.todo-comments" },
+    { import = "plugins.ui.zen-mode" },
 }

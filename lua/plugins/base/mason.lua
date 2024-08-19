@@ -7,7 +7,6 @@ return {
       "html-lsp",
       "css-lsp",
       "prettier",
-      "eslint-lsp",
       "json-lsp",
       "sqlls",
     },

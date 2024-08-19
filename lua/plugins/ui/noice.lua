@@ -1,7 +1,7 @@
 return {
   "folke/noice.nvim",
   version = "4.4.7",
-  event = "VimEnter",
+  event = "VeryLazy",
   opts = {
     presets = { inc_rename = true },
   },
