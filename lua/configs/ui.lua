@@ -18,20 +18,6 @@ return {
   },
 
   {
-    "NvChad/nvim-colorizer.lua",
-    event = "User FilePost",
-    opts = { user_default_options = { names = false } },
-    config = function(_, opts)
-      require("colorizer").setup(opts)
-
-      -- execute colorizer as soon as possible
-      vim.defer_fn(function()
-        require("colorizer").attach_to_buffer(0)
-      end, 0)
-    end,
-  },
-
-  {
     "nvim-tree/nvim-web-devicons",
     opts = function()
       return { override = require "nvchad.icons.devicons" }
@@ -61,18 +47,7 @@ return {
   },
 
   -- file managing , picker etc
-  {
-    "nvim-tree/nvim-tree.lua",
-    lazy = false,
-    cmd = { "NvimTreeToggle", "NvimTreeFocus" },
-    opts = function()
-      return require "nvchad.configs.nvimtree"
-    end,
-    config = function(_, opts)
-      dofile(vim.g.base46_cache .. "nvimtree")
-      require("nvim-tree").setup(opts)
-    end,
-  },
+  { import = "configs.util.tree" },
 
   {
     "folke/which-key.nvim",
@@ -83,4 +58,38 @@ return {
       require("which-key").setup(opts)
     end,
   },
+
+  { import = "configs.lang.conform" },
+
+  {
+    "lewis6991/gitsigns.nvim",
+    event = "User FilePost",
+    opts = function()
+      return require "nvchad.configs.gitsigns"
+    end,
+  },
+
+  { import = "configs.base.mason" },
+
+  { import = "configs.base.lspconfig" },
+
+  { import = "configs.base.cmp" },
+
+  { import = "configs.base.telescope" },
+
+  {
+    "NvChad/nvim-colorizer.lua",
+    event = "User FilePost",
+    opts = { user_default_options = { names = false } },
+    config = function(_, opts)
+      require("colorizer").setup(opts)
+
+      -- execute colorizer as soon as possible
+      vim.defer_fn(function()
+        require("colorizer").attach_to_buffer(0)
+      end, 0)
+    end,
+  },
+
+  { import = "configs.base.treesitter" },
 }

@@ -1,34 +1,40 @@
 return {
   "ThePrimeagen/harpoon",
   branch = "harpoon2",
-  dependencies = { "nvim-lua/plenary.nvim" },
-  lazy = false,
+  event = "User FilePost",
+  dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
   config = function()
     local harpoon = require "harpoon"
+    local notify = require "notify"
     local kmset = vim.keymap.set
 
     -- REQUIRED
-    harpoon:setup {}
+    harpoon:setup {
+      settings = {
+        save_on_toggle = true,
+      },
+    }
     -- REQUIRED
 
-    kmset("n", "<leader>ha", function()
+    kmset("n", "<leader>hi", function()
       harpoon:list():add()
-    end)
-    kmset("n", "<leader>h", function()
-      harpoon.ui:toggle_quick_menu(harpoon:list())
+      notify "Harpoon'd"
     end)
 
-    kmset("n", "<leader>h1", function()
+    kmset("n", "<leader>ha", function()
       harpoon:list():select(1)
     end)
-    kmset("n", "<leader>h2", function()
+    kmset("n", "<leader>hs", function()
       harpoon:list():select(2)
     end)
-    kmset("n", "<leader>h3", function()
+    kmset("n", "<leader>hd", function()
       harpoon:list():select(3)
     end)
-    kmset("n", "<leader>h4", function()
+    kmset("n", "<leader>hf", function()
       harpoon:list():select(4)
+    end)
+    kmset("n", "<leader>hp", function()
+      harpoon.ui:toggle_quick_menu(harpoon:list())
     end)
 
     -- Toggle previous & next buffers stored within Harpoon list
