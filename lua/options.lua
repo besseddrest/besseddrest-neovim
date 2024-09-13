@@ -1,18 +1,15 @@
 require "nvchad.options"
 
--- add yours here!
-
 local o = vim.o
 
 -- terminal general
 o.termguicolors = true
--- o.guicursor = "i:ver100-blinkwait500-blinkon1-blinkoff1"
+o.guicursor = "i-ci:ver25-blinkwait500-blinkon500-blinkoff500"
 o.background = "dark"
 o.signcolumn = "yes"
 o.cursorline = true
 o.relativenumber = true
 o.colorcolumn = "90"
--- o.autochdir = true
 
 -- editing
 o.tabstop = 4
@@ -22,3 +19,4 @@ o.wrap = true
 o.linebreak = true
 o.textwidth = 80
 o.scrolloff = 10
+o.ruler = true

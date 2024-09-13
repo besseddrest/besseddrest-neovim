@@ -11,21 +11,23 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-local lazy_config = require "configs.lazy"
+local lazy_config = require "configs.base.lazy"
 
--- load plugins
+-- load plugins + config
 require("lazy").setup({
   {
     "NvChad/NvChad",
     lazy = false,
     branch = "v2.5",
     import = "nvchad.plugins",
+    ui = {
+      border = "rounded",
+    },
     config = function()
       require "options"
     end,
   },
-
-  { import = "plugins" },
+  { import = "configs" },
 }, lazy_config)
 
 -- load theme

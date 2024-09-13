@@ -5,14 +5,20 @@ return {
   dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
   config = function()
     local harpoon = require "harpoon"
+    local notify = require "notify"
     local kmset = vim.keymap.set
 
     -- REQUIRED
-    harpoon:setup {}
+    harpoon:setup {
+      settings = {
+        save_on_toggle = true,
+      },
+    }
     -- REQUIRED
 
     kmset("n", "<leader>hi", function()
       harpoon:list():add()
+      notify "Harpoon'd"
     end)
 
     kmset("n", "<leader>ha", function()
@@ -27,12 +33,7 @@ return {
     kmset("n", "<leader>hf", function()
       harpoon:list():select(4)
     end)
-
-    -- kmset("n", "<leader>hc", function()
-    --   harpoon:list():clear_all()
-    -- end)
-    --
-    kmset("n", "<leader>h", function()
+    kmset("n", "<leader>hp", function()
       harpoon.ui:toggle_quick_menu(harpoon:list())
     end)
 

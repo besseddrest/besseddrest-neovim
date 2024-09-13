@@ -1,15 +1,16 @@
 return {
     "rcarriga/nvim-notify",
     opts = {},
+    on_open = function(win)
+        vim.api.nvim_win_set_option(win, "winblend", 30)
+        vim.api.nvim_win_set_option(win, { zindex = 100 })
+    end,
     config = function()
         require("notify").setup {
-            timeout = 2000,
-            max_width = 100,
+            timeout = 3000,
+            max_width = 50,
             min_width = 50,
             stages = "fade_in_slide_out",
-            message = {
-                width = 100,
-            },
         }
         vim.notify = require "notify"
     end,
